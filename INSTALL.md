@@ -18,8 +18,7 @@
 下载仓库并进入项目目录后运行：
 
 ```bash
-chmod +x install.sh scripts/*.sh service/*.sh
-./install.sh
+bash install.sh
 ```
 
 脚本会完成：
@@ -55,7 +54,7 @@ python3 -m pip install --user -r requirements.txt
 Linux 可以直接运行：
 
 ```bash
-./service/start_service.sh
+bash service/start_service.sh
 ```
 
 Windows PowerShell 可以运行：
@@ -117,7 +116,7 @@ export VIDEO_NOTES_HOME="$HOME/Documents/MyVideoNotes"
 macOS 一键安装时可以这样指定：
 
 ```bash
-VIDEO_NOTES_HOME="$HOME/Documents/MyVideoNotes" ./install.sh
+VIDEO_NOTES_HOME="$HOME/Documents/MyVideoNotes" bash install.sh
 ```
 
 ## 可选的视频转写能力
@@ -137,13 +136,13 @@ Apple Silicon 也可以使用 `mlx-whisper`。这些依赖不是基础采集和 
 
 ```bash
 git pull
-./install.sh
+bash install.sh
 ```
 
 macOS 卸载自动启动服务：
 
 ```bash
-./service/uninstall_launch_agent.sh
+bash service/uninstall_launch_agent.sh
 ```
 
 删除 Skill：

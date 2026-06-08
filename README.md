@@ -32,7 +32,7 @@ Markdown 笔记 + DOCX 导出
 macOS 用户可以在项目目录运行：
 
 ```bash
-./install.sh
+bash install.sh
 ```
 
 然后在 Chrome 的 `chrome://extensions` 页面开启开发者模式，加载 `chrome-extension` 文件夹，或解压 `dist/chinese-video-notes-extension-v1.0.0.zip` 后加载。
@@ -75,7 +75,7 @@ dist/              可直接下载和解压的扩展包
 ```bash
 python3 -m pip install -r requirements.txt
 python3 tests/test_core.py
-./scripts/package_extension.sh
+bash scripts/package_extension.sh
 ```
 
 ## License
