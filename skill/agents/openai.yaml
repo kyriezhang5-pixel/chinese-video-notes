@@ -1,0 +1,8 @@
+interface:
+  display_name: "Chinese Video Notes"
+  short_description: "中文网页和视频边看边记"
+  brand_color: "#1F4D78"
+  default_prompt: "Use $chinese-video-notes to整理最近采集 and export the note to Word."
+
+policy:
+  allow_implicit_invocation: true
