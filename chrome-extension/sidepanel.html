@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>中文边看边记</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="city-backdrop" aria-hidden="true"></div>
+      <div class="atmosphere" aria-hidden="true">
+        <span class="rain rain-far"></span>
+        <span class="rain rain-near"></span>
+        <span class="neon-drift neon-drift-a"></span>
+        <span class="neon-drift neon-drift-b"></span>
+        <span class="energy-rail"></span>
+      </div>
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="hud-corner hud-corner-top" aria-hidden="true">
+        <span>SYS.26</span>
+        <i></i>
+        <b>ONLINE</b>
+      </div>
+      <div class="hud-corner hud-corner-side" aria-hidden="true">
+        <span>MEM</span>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+
+      <header class="app-header">
+        <div class="brand-row">
+          <div class="brand-mark" aria-hidden="true">
+            <span>记</span>
+          </div>
+          <div class="brand-copy">
+            <span class="brand-code">CNV // CAPTURE UNIT</span>
+            <h1>边看边记</h1>
+            <p>NEURAL LEARNING ARCHIVE TERMINAL</p>
+          </div>
+        </div>
+
+        <div id="service-state" class="service-state loading" role="status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="service-status">正在检查本地服务</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-context" aria-label="当前网页">
+          <div class="context-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v10a1.5 1.5 0 0 1-1.5 1.5H9l-5 3V5.5Z" />
+              <path d="M8 9h8M8 12.5h5" />
+            </svg>
+          </div>
+          <div class="context-copy">
+            <span class="eyebrow">TARGET // 当前页面</span>
+            <strong id="current-page-title">正在读取当前标签页...</strong>
+            <span id="current-page-domain">请保持要采集的页面处于当前窗口</span>
+          </div>
+        </section>
+
+        <section class="session-panel panel" aria-labelledby="session-title">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">MISSION // 学习项目</span>
+              <h2 id="session-title">当前采集</h2>
+            </div>
+            <button id="new-session" class="text-button" type="button">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 4v12M4 10h12" />
+              </svg>
+              新建
+            </button>
+          </div>
+
+          <label class="visually-hidden" for="session-select">切换当前采集</label>
+          <div class="select-wrap">
+            <select id="session-select" aria-label="切换当前采集">
+              <option value="">还没有采集</option>
+            </select>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="m6 8 4 4 4-4" />
+            </svg>
+          </div>
+
+          <form id="new-session-form" class="session-form" hidden>
+            <div class="form-heading">
+              <strong>新建一个学习项目</strong>
+              <span>笔记和导出文件会使用这个名称</span>
+            </div>
+            <label for="session-name">项目名称</label>
+            <input
+              id="session-name"
+              maxlength="80"
+              autocomplete="off"
+              placeholder="例如：Codex 零基础教程"
+            />
+            <div class="record-controls">
+              <button id="confirm-session" class="small-button primary-button" type="submit">创建项目</button>
+              <button id="cancel-session" class="small-button" type="button">取消</button>
+            </div>
+          </form>
+
+          <div class="workflow" aria-label="使用流程">
+            <span><b>1</b>加入内容</span>
+            <i aria-hidden="true"></i>
+            <span><b>2</b>随手记</span>
+            <i aria-hidden="true"></i>
+            <span><b>3</b>让 Codex 整理</span>
+          </div>
+        </section>
+
+        <section class="capture-card panel" aria-labelledby="capture-title">
+          <div class="capture-copy">
+            <span class="eyebrow">PHASE 01 // 第一步</span>
+            <h2 id="capture-title">加入当前内容</h2>
+            <p>自动保存页面正文、视频位置和可见字幕，作为后续整理的主要素材。</p>
+          </div>
+          <button id="capture-video-note" class="primary-action" type="button">
+            <span class="button-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3v12M7.5 10.5 12 15l4.5-4.5" />
+                <path d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3" />
+              </svg>
+            </span>
+            <span>
+              <strong>加入当前视频或网页</strong>
+              <small>稍后会与时间点笔记一起整理</small>
+            </span>
+            <svg class="button-arrow" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="m7 4 6 6-6 6" />
+            </svg>
+          </button>
+        </section>
+
+        <section class="note panel" aria-labelledby="note-title">
+          <div class="note-reactor" aria-hidden="true">
+            <span></span>
+            <i></i>
+          </div>
+          <div class="section-heading note-heading">
+            <div class="note-heading-copy">
+              <span class="eyebrow">PHASE 02 // 第二步</span>
+              <div class="note-title-row">
+                <span class="note-title-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20">
+                    <path d="M4 3h9l3 3v11H4V3Z" />
+                    <path d="M7 3v5h6V3M7 13h6" />
+                  </svg>
+                </span>
+                <div>
+                  <h2 id="note-title">我的笔记</h2>
+                  <span class="note-subtitle">即时记录当前理解与灵感</span>
+                </div>
+              </div>
+            </div>
+            <div class="note-telemetry">
+              <span class="note-live"><i></i> LIVE INPUT</span>
+              <span id="note-count" class="character-count">0 / 2000</span>
+            </div>
+          </div>
+          <textarea
+            id="quick-note"
+            rows="6"
+            maxlength="2000"
+            placeholder="写下理解、疑问、灵感或待办。保存时会自动带上当前页面和视频位置。"
+          ></textarea>
+          <div class="composer-footer">
+            <span class="keyboard-hint"><kbd>⌘</kbd><kbd>Enter</kbd> 快速保存</span>
+            <button id="save-manual-note" class="secondary-action" type="button">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M4 3h9l3 3v11H4V3Z" />
+                <path d="M7 3v5h6V3M7 14h6" />
+              </svg>
+              保存这条笔记
+            </button>
+          </div>
+        </section>
+
+        <details class="advanced panel">
+          <summary>
+            <span class="summary-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20">
+                <path d="M3 5h14M3 10h14M3 15h14" />
+                <circle cx="7" cy="5" r="1.5" />
+                <circle cx="13" cy="10" r="1.5" />
+                <circle cx="9" cy="15" r="1.5" />
+              </svg>
+            </span>
+            <span>
+              <strong>更多采集方式</strong>
+              <small>摘录、整页、时间点与截图</small>
+            </span>
+            <svg class="summary-chevron" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="m6 8 4 4 4-4" />
+            </svg>
+          </summary>
+          <div class="tool-grid">
+            <button id="capture-selection" class="tool-button" type="button">
+              <span aria-hidden="true">摘</span>
+              <strong>选中文字</strong>
+              <small>保存高亮片段</small>
+            </button>
+            <button id="capture-page" class="tool-button" type="button">
+              <span aria-hidden="true">页</span>
+              <strong>整页文字</strong>
+              <small>保存页面上下文</small>
+            </button>
+            <button id="capture-video" class="tool-button" type="button">
+              <span aria-hidden="true">时</span>
+              <strong>当前时间点</strong>
+              <small>标记视频位置</small>
+            </button>
+            <button id="capture-screenshot" class="tool-button" type="button">
+              <span aria-hidden="true">图</span>
+              <strong>当前截图</strong>
+              <small>保存可见画面</small>
+            </button>
+          </div>
+        </details>
+
+        <section class="latest" aria-labelledby="latest-title">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">DATA LOG // 最近保存</span>
+              <h2 id="latest-title">当前采集内容</h2>
+            </div>
+            <span id="latest-count" class="count-badge">0 条</span>
+          </div>
+          <div id="latest-list" class="latest-list" aria-live="polite">
+            <div class="empty-state">
+              <span aria-hidden="true">空</span>
+              <strong>还没有保存内容</strong>
+              <p>先新建采集，再加入当前视频或网页。</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="organize-card">
+          <div>
+            <span class="eyebrow">PHASE 03 // 第三步</span>
+            <strong>看完后交给 Codex 整理</strong>
+          </div>
+          <button id="copy-command" class="copy-command" type="button" title="复制整理指令">
+            <code>请先新建采集</code>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <rect x="7" y="7" width="9" height="9" rx="2" />
+              <path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+            </svg>
+          </button>
+        </div>
+        <p id="organize-hint">新建并命名采集后，可复制对应的整理指令。</p>
+      </footer>
+    </div>
+
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "中文边看边记",
+  "version": "1.0.0",
+  "description": "边看中文网页、图文和视频边采集学习笔记，保存到本地收件箱。",
+  "permissions": ["activeTab", "scripting", "sidePanel", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "中文边看边记"
+  }
+}
